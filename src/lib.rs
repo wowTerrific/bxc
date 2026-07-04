@@ -33,3 +33,38 @@ pub fn bin_to_int(num_str: &str) -> Result<u64, Box<dyn Error>> {
 
     Ok(num)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn bin_to_int_correct() {
+        let cases = vec![
+            ("0001", 1),
+            ("0010", 2),
+            ("0100", 4),
+            ("1000", 8),
+        ];
+
+        for (input, expected) in cases {
+            let output = bin_to_int(input).expect("should not panic");
+            assert_eq!(output, expected);
+        }
+    }
+
+    #[test]
+    fn bin_to_int_incorrect() {
+        let cases = vec![
+            "a",
+            "00002",
+            "lol",
+            "!",
+        ];
+        for input in cases {
+            let output = bin_to_int(input);
+            assert_eq!(output.unwrap_err().to_string(), "must supply valid binary input");
+        }
+    }
+
+}
