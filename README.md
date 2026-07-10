@@ -3,6 +3,4 @@ Converts binary, hexidecimal, or integers into their counterparts for quick refe
 
 Current program assumes your system is Big Endian.
 
-Current program assumes positive numbers only. 
-
 Need to restructure for better usage, testing, and utiilize clap. Works for now though!
